@@ -127,3 +127,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 urlpatterns = [
     # ...
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+STATIC_URL = '/static/'

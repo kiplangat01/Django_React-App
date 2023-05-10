@@ -1,0 +1,10 @@
+.col-md-2{
+    float: right;
+    margin-top: -60px;
+    text-align: center;
+}
+
+/* CSS for Twitter-like post */
+article {
+  text-align: center;
+}
