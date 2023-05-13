@@ -1,7 +1,7 @@
 {% extends "blog/base.html" %}
 {% block content %}
 <div class="header" style="margin-left: 24%; margin-top: -48px; font-weight: bold;">
-   <a href="" style="color: black; text-decoration: none;"><h5 style="font-weight: bold ;">Home</h5></a> 
+   <a href="{% url 'blog-home' %}" style="color: black; text-decoration: none;"><h5 style="font-weight: bold ;">Home</h5></a> 
 </div>
 <button class="twitter-button text-muted"><b>For You</b></button>
 <button class="twitter-button following text-muted"><b>Following</b></button>
@@ -10,12 +10,26 @@
         <article class="border-right" >
             <a href="">
             <div class="media-body">
-                <div class="article-metadata">
-                    <a class="mr-2" href="#">mesh</a>
-                    <small class="text-muted">12/11/2023</small>
-                </div>
-                <h2><a class="article-title" href="#">post.title</a></h2>
-               <a href=""><p class="article-content">post.content</p></a> 
+                {% for post in posts%}
+    
+       <article class="media content-section" style="width: 400px; color: black; margin-left: 350px;">
+        
+         <div class="media-body">
+           <div class="article-metadata">
+             <a class="mr-2" id="" href="#">{{ post.author }}</a>
+             <small class="text-muted">{{ post.date_posted|date:"F d , Y" }}</small>  
+           </div>
+
+          
+           <p> <p class="article-content" style="color: black;"> {{ post.content }} </p></p>
+           <img src="{{ post.image.url }}" alt="">
+          
+           
+
+         </div>
+       </article>
+
+   {% endfor %}
             </div>
             </a>
             </article>

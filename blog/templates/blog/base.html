@@ -26,26 +26,32 @@
   
       <div class="sidebar">
         <div class="sidebar-header">
-          <h2 style="font-size: 28px;"><i class="fab fa-twitter"></i></h2>
+          <a href="{% url 'blog-home' %}"><h2 style="font-size: 28px;"><i class="fab fa-twitter"></i></h2></a>
         </div>
         <ul class="sidebar-menu">
           <li><a href="{% url 'blog-home' %}"><i class="fas fa-home"></i> Home</a></li>
           <li><a href="{% url 'blog-about' %}"><i class="fas fa-hashtag"></i>About</a></li>
           <li><a href="#"><i class="far fa-bell"></i> Notifications</a></li>
           <li><a href="#"><i class="far fa-envelope"></i> Messages</a></li>
-          <li><a href="#"><i class="far fa-user"></i> Profile</a></li>
-          <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+          <li><a href="{% url 'register' %}"><i class="far fa-user"></i>Register</a></li>
+          <li><a href="#"><i class="far fa-circle"></i>More</a></li>
         </ul>
         <button style="background-color: #00acee; border: 0; color: white; padding: 10px; width: 200px; border-radius: 30px; font-weight: bold;">Tweet</button>
       </div>
       
-      
+      {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+              {% endif %}
     {% block content %}
     
     {% endblock %}
     
     
-    <div class="col-md-2">
+    <div class="col-md-2" style="margin-top: -200px;">
         <div class="content-section">
             <h3 >side bar</h3>
             <p>input information pleasing</p>
