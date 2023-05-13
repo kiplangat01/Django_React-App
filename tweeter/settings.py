@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -134,9 +135,11 @@ urlpatterns = [
 STATIC_URL = '/static/'
 
 
-MEDIA_ROOT = 'path/to/media/root/directory'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'blog-home'
+
+LOGIN_URL = 'login'
