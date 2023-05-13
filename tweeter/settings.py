@@ -36,13 +36,14 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'blog',
     'crispy_forms',
+    'crispy_bootstrap4',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -135,3 +136,7 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = 'path/to/media/root/directory'
 MEDIA_URL = '/media/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'blog-home'
