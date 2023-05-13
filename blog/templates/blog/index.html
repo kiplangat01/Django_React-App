@@ -14,7 +14,7 @@
                 {% for post in posts%}
     
        <article class="media content-section" style="width: 400px; color: black; margin-left: 350px;">
-        
+        <img class="rounded-circle" src="{{ post.author.profile.image.url }}" height="50px" width="50px">
          <div class="media-body">
            <div class="article-metadata">
              <a class="mr-2" id="" href="#">{{ post.author }}</a>
