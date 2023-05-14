@@ -20,8 +20,7 @@
              <a class="mr-2" id="" href="#">{{ post.author }}</a>
              <small class="text-muted">{{ post.date_posted|date:"F d , Y" }}</small>  
            </div>
-
-          
+          <h3><a href="{% url 'post-detail' post.id %}"> {{ post.title }} </a></h3>
            <p> <p class="article-content" style="color: black;"> {{ post.content }} </p></p>
            <img src="{{ post.image.url }}" alt="">
           

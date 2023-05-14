@@ -5,7 +5,7 @@ from django.contrib import messages
 from .forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm
 from .models import Post
 from django.contrib.auth.decorators import login_required
-
+from django.views.generic import ListView, DetailView
 from django.contrib.auth.forms import UserCreationForm
 
 def home(request):
@@ -13,6 +13,16 @@ def home(request):
         'posts': Post.objects.all()
     }
     return render(request, 'blog/index.html', context )
+
+class PostListView(ListView):
+    model = Post
+    template_name = 'blog/index.html'
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+
+class PostDetailView(DetailView):
+    model = Post
+
 
 def about(request):
     return render(request ,'blog/about.html')
