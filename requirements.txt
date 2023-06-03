@@ -1,0 +1,16 @@
+asgiref==3.6.0
+beautifulsoup4==4.12.2
+certifi==2023.5.7
+cloudinary==1.32.0
+crispy-bootstrap4==2022.1
+Django==4.2.1
+django-bootstrap4==23.1
+django-bootstrap5==23.1
+django-crispy-forms==2.0
+djangorestframework==3.14.0
+Pillow==9.5.0
+pytz==2023.3
+six==1.16.0
+soupsieve==2.4.1
+sqlparse==0.4.4
+urllib3==1.26.15

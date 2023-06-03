@@ -31,9 +31,12 @@
   </div>
 
 </section>
-
+<div class="head" style="text-align: center; margin-top: 7%;">
+  <h4 class="font-weight-bold">New blogs</h4>
+</div>
    
                 {% for post in posts%}
+                
                 <div class="col-md-2 mb-2">
                   <div class="card " style="width:350px;  margin: 4%; margin-top: 50%; padding: 5px">
                    <img src="{{ post.image.url }}" class="card-img-top" alt="{{post.title}}" height="230px">
