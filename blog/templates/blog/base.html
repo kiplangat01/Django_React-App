@@ -11,44 +11,45 @@
     <title>Blog app</title>
 </head>
 <body>
-    
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <style>
+      li{
+        margin-left: 30px;
+        font-size: 17px;
+      }
+    </style>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size: 17px; height: auto;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" style="font-weight: bold; font-size: 30px;" href="{% url 'blog-home' %}"><span style="color: rgb(6, 2, 62);">Blog</span><span style="color: rgb(255, 0, 81);">App</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 700px;">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'blog-home' %}">Home</a>
+            <a class="nav-link active"  style="color: rgb(6, 2, 62);" aria-current="page" href="{% url 'blog-home' %}">Home</a>
           </li>
           {% if user.is_authenticated %}
           <li class="nav-item ">
-            <a class="nav-link active" href="{% url 'logout' %}">logout</a>
+            <a class="nav-link active " style="background-color: rgb(255, 0, 81); font-weight: bold; border-radius: 20px; color: white; padding-right: 15px; padding-left: 15px;" href="{% url 'post-create' %}">new blog</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link active" href="{% url 'post-create' %}">new blog</a>
+            <a class="nav-link active"  style="color: rgb(6, 2, 62);" href="{% url 'logout' %}">logout</a>
           </li>
+         
           <li class="nav-item ">
-            <a class="nav-link active" href="{% url 'profile' %}">profile</a>
+            <a class="nav-link active"  style="color: rgb(6, 2, 62);" href="{% url 'profile' %}">profile</a>
           </li>
           {% else %}
           <li class="nav-item ">
-            <a class="nav-link active" href="{% url 'login' %}">login</a>
+            <a class="nav-link active"  style="color: rgb(6, 2, 62);" href="{% url 'login' %}">login</a>
           </li>
          
           <li class="nav-item">
-            <a class="nav-link active" href="{% url 'register' %}" >Register</a>
+            <a class="nav-link active"  style="color: rgb(6, 2, 62);background-color: rgb(255, 0, 81);font-weight: bold; border-radius: 20px; color: white; padding-right: 15px; padding-left: 15px;" href="{% url 'register' %}" >Sign Up</a>
           </li>
           {% endif %}
         </ul>
-        <form action="#" method="GET">
-          <div class="search-container">
-            <input type="text" class="search-input" name="q" placeholder="Search Blogs">
-            <button type="submit" class="search-button"><i class="fas fa-search text-dark"></i></button>
-          </div>
-        </form>
+       
       </div>
     </div>
   </nav>
@@ -66,6 +67,39 @@
     
     {% endblock %}
     
+    <footer class="bg-dark text-light" style="margin-top: 100px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>About Us</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur <br> adipiscing elit. Sed eleifend arcu sit amet tortor eleifend, <br> eu lacinia ipsum ullamcorper.</p>
+          </div>
+          <div class="col-md-3">
+            <h5>Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Contact</h5>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-map-marker-alt"></i> 00500 Embakasi, Nairobi, Kenya</li>
+              <li><i class="fas fa-phone"></i> +254 721 664 897</li>
+              <li><i class="fas fa-envelope"></i> meshnobie@gmail.com</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <hr>
+            <p>&copy; 2023 Your Website. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
     
     
 

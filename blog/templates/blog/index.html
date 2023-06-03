@@ -1,40 +1,83 @@
 {% extends "blog/base.html" %}
 {% block content %}
+{% load static %}
 
-<section style="text-align: center;">
-  <div class="container">
-    <h1>Get in touch with our lates trending Updates in diffent fields</h1>
+<style>
+  section{
+    background-image: url('{% static "images/rain.jpg" %}');
+    background-size: cover;
+    background-position: center;
+    margin: 2%;
+    height: 400px;
+
+  }
+</style>
+
+<div class="top" style="text-align: center;">
+  <h6 style="font-weight: bold; color: rgb(3, 3, 52); padding-top: 7%;">The blog</h6><br>
+ <h2 style="font-weight: bold; color: rgb(255, 0, 76);" >Writings from different blogers</h3> <br>
+ <p style="color: rgb(3, 3, 52);">get inspired by the latest tranding updates from every field</p>
+
+ <br>
+ 
+</div>
+
+<section>
+  <div class="intro">
+    <h1 style="color: white; padding-top: 5%; margin-left:3%; font-weight: bold;">welcome to the blogers discover latest <br> trends in every field in the planet</h1>
+    <p  style="color: white; margin-left:3%;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis debitis iste laboriosam, <br> quo inventore quae eligendi ipsam beatae perspiciatis molestias nesciunt, perferendis ab facere obcaecati <br> vero quis accusantium odio quas.</p>
+    <a class="nav-link active " style="background-color: rgb(255, 0, 81); width: fit-content; margin-top: 2%; margin-left: 3%; font-weight: bold; border-radius: 20px; color: white; padding-right: 15px; padding-left: 15px;" href="{% url 'post-create' %}">Post a Blog</a>
+
   </div>
+
 </section>
 
-    <main style="border-right: 1px solid #ddd;">
-        <article class="border-right" >
-            <a href="">
-            <div class="media-body">
+   
                 {% for post in posts%}
-    
-       <article class="media content-section" style="width: 400px; color: black; margin-left: 350px;">
-        <img class="rounded-circle" src="{{ post.author.profile.image.url }}" height="50px" width="50px">
-         <div class="media-body">
-           <div class="article-metadata">
-             <a class="mr-2" id="" href="#">{{ post.author }}</a>
-             <small class="text-muted">{{ post.date_posted|date:"F d , Y" }}</small>  
-           </div>
-          <h3><a href="{% url 'post-detail' post.id %}"> {{ post.title }} </a></h3>
-           <p> <p class="article-content" style="color: black;"> {{ post.content }} </p></p>
-           <img src="{{ post.image.url }}" alt="">
-          
-           
-
-         </div>
-       </article>
+                <div class="col-md-2 mb-2">
+                  <div class="card " style="width:350px;  margin: 4%; margin-top: 50%; padding: 5px">
+                   <img src="{{ post.image.url }}" class="card-img-top" alt="{{post.title}}" height="230px">
+                    
+                    <div class="card-body">
+                      <a style="text-decoration: none;" href="{% url 'post-detail' post.id %}"> <h5 class="card-text" style=" color: #000; padding-top: 10px; text-decoration: none;">{{post.title}}</h5></a>                      
+                      
+                      <a class="nav-link active " style="background-color: rgb(255, 0, 81);  margin-top: 10%; border-radius: 20px; color: white; padding-right: 15px; padding-left: 15px;" href="{% url 'post-detail' post.id %}">Read Blog</a>
+                      <div class="pad" style="margin-top: 10%;">
+                        <img class="rounded-circle" src="{{ post.author.profile.image.url }}" height="50px" width="50px">
+                        <a class="mr-2" style="margin-left: 1%; " id="" href="#">{{ post.author }}</a>
+                        <small class="text-muted"  style=" margin-left: 30%;">{{ post.date_posted|date:"F d , Y" }}</small> 
+                      </div>
+                    </div>
+                   
+                  </div>
+                </div>
 
    {% endfor %}
-            </div>
-            </a>
-            </article>
-    </main>
-        
+
+{% if is_paginated %}
+<div class="paginate" style="margin-left: 35%; margin-top: 30px;">
+  {% if page_obj.has_previous %}
+      <a class="btn btn-outline-info mb-4" style="margin-left: 3%;" href="?page=1">first</a>
+      <a class="btn btn-outline-info mb-4" style="margin-left: 3%;" href="?page={{ page_obj.previous_page_number }}"><-</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+
+    {% if page_obj.number == num %}
+    <a class="btn btn-info mb-4" style="margin-left: 3%;" href="?page={{ num }}">{{ num }}</a>
+    {% elif num > page.obj.number|add:'-3' and num < page.obj.number|add:'3' %}
+    <a class="btn btn-outline-info mb-4" style="margin-left: 3%;" href="?page={{ num }}">{{ num }}</a>
+    {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+      <a class="btn btn-outline-info mb-4" style="margin-left: 3%;" href="?page={{ page_obj.next_page_number }}">-></a></a></a>
+      <a class="btn btn-outline-info mb-4" style="margin-left: 3%;" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+    {% endif %}
+  </div>
+
+{% endif %}
+
 
 
 {% endblock content %}
